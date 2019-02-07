@@ -1,5 +1,6 @@
 #include <SoftwareSerial.h>
 
+SoftwareSerial ModBluetooth(10, 11); //TX | RX
 // constantes de sensores
 const int TEMP_SENSOR = A0 ; 
 
@@ -11,7 +12,6 @@ const int UMBRAL = 26;
 const char TEMP_MODULE = '1';
 
 
-SoftwareSerial ModBluetooth(10, 11); //TX | RX
 
 void setup() {
   // put your setup code here, to run once:
@@ -37,8 +37,8 @@ void loop() {
       float temp = voltaje * 100;
       Serial.println(temp) ;
       delay(100);
-      ModeBluetooth.print(temp);
-      ModeBluetooth.print("#");
+      ModBluetooth.print(temp);
+      ModBluetooth.print("#");
       if(temp >= UMBRAL) {
         digitalWrite(CONTROL_VENT, HIGH);
       }else{
@@ -49,9 +49,9 @@ void loop() {
     default:
       Serial.print("hola mundo");
       delay(100);
-      ModeBluetooth.print("Hola mundo  ");
-            ModeBluetooth.print(varchar);
-      ModeBluetooth.print("#");
+      ModBluetooth.print("Hola mundo  ");
+            ModBluetooth.print(varchar);
+      ModBluetooth.print("#");
       break;
   }
  
